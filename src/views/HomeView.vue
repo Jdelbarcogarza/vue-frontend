@@ -1,18 +1,33 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+  <div class="home center">
+    <form class="container">
+      <label for="name">Escribe tu nombre</label>
+      <input id="name" type="text" placeholder="nombre" v-model="name" />
+      <button type="submit" @click="handleSubmit">Submit</button>
+    </form>
   </div>
 </template>
 
-<script>
-// @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
+<script setup>
+import { ref } from "vue";
 
-export default {
-  name: "HomeView",
-  components: {
-    HelloWorld,
-  },
+const name = ref("");
+
+// eslint-disable-next-line no-unused-vars
+const handleSubmit = (event) => {
+  event.preventDefault();
+  console.log("enviado", name.value);
 };
 </script>
+
+<style scoped>
+.center {
+  display: flex;
+  justify-content: center;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+}
+</style>
